@@ -187,37 +187,28 @@ function typeWriter(
     const element =
         document.getElementById(elementId);
 
-    if (!element) return;
-
-    element.innerHTML = "";
-
-    if (buttonId) {
-
-        const button =
-            document.getElementById(buttonId);
-
-        if (button) {
-            button.classList.add("hidden");
-        }
+  const memories = [
+    {
+        image: "photo1.png",
+        title: "A little memory ♡",
+        text: "One of those moments I'll always remember."
+    },
+    {
+        image: "photo2.png",
+        title: "Us being us 🤍",
+        text: "Another memory that makes me smile."
+    },
+    {
+        image: "photo3.png",
+        title: "Good times ✨",
+        text: "Some moments are just too special to forget."
+    },
+    {
+        image: "photo4.png",
+        title: "Forever a memory 🌸",
+        text: "And hopefully, there are many more to come."
     }
-
-    let index = 0;
-
-    function write() {
-
-        if (index < text.length) {
-
-            element.innerHTML +=
-                text.charAt(index);
-
-            index++;
-
-            setTimeout(write, speed);
-
-        } else {
-
-            if (buttonId) {
-
+];
                 const button =
                     document.getElementById(buttonId);
 
