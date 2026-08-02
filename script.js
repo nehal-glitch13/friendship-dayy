@@ -6,7 +6,6 @@
 // ---------- PAGE NAVIGATION ----------
 
 function go(pageId) {
-
     document.querySelectorAll(".page").forEach(page => {
         page.classList.remove("active");
     });
@@ -34,7 +33,6 @@ const floatingEmojis = [
 ];
 
 function createFloatingEmoji() {
-
     const container = document.getElementById("floating");
 
     if (!container) return;
@@ -70,8 +68,6 @@ setInterval(createFloatingEmoji, 700);
 // ---------- OPEN FIRST GIFT ----------
 
 function openGift() {
-
-    // Start the floating effect
     for (let i = 0; i < 12; i++) {
         setTimeout(createFloatingEmoji, i * 100);
     }
@@ -85,7 +81,6 @@ function openGift() {
 // ---------- OPEN ENVELOPES ----------
 
 function openEnvelope(number) {
-
     const envelope =
         document.getElementById("env" + number);
 
@@ -94,9 +89,7 @@ function openEnvelope(number) {
     envelope.classList.add("open");
 
     if (number === 1) {
-
         setTimeout(() => {
-
             go("shortLetter");
 
             typeWriter(
@@ -107,14 +100,11 @@ I hope we always stay the same idiots who can talk about absolutely anything and
                 35,
                 "toMemories"
             );
-
         }, 1100);
     }
 
     if (number === 2) {
-
         setTimeout(() => {
-
             go("bigLetter");
 
             typeWriter(
@@ -123,7 +113,6 @@ I hope we always stay the same idiots who can talk about absolutely anything and
                 20,
                 "toFinal"
             );
-
         }, 1100);
     }
 }
@@ -183,11 +172,53 @@ function typeWriter(
     speed = 30,
     buttonId = null
 ) {
-
     const element =
         document.getElementById(elementId);
 
-  const memories = [
+    if (!element) return;
+
+    element.innerHTML = "";
+
+    if (buttonId) {
+        const button =
+            document.getElementById(buttonId);
+
+        if (button) {
+            button.classList.add("hidden");
+        }
+    }
+
+    let index = 0;
+
+    function write() {
+        if (index < text.length) {
+            element.innerHTML +=
+                text.charAt(index);
+
+            index++;
+
+            setTimeout(write, speed);
+        } else {
+            if (buttonId) {
+                const button =
+                    document.getElementById(buttonId);
+
+                if (button) {
+                    button.classList.remove("hidden");
+                }
+            }
+        }
+    }
+
+    write();
+}
+
+
+// ==========================================
+// MEMORY PHOTOS
+// ==========================================
+
+const memories = [
     {
         image: "photo1.png",
         title: "A little memory ♡",
@@ -209,57 +240,6 @@ function typeWriter(
         text: "And hopefully, there are many more to come."
     }
 ];
-                const button =
-                    document.getElementById(buttonId);
-
-                if (button) {
-                    button.classList.remove("hidden");
-                }
-            }
-        }
-    }
-
-    write();
-}
-
-
-// ==========================================
-// MEMORY PHOTOS
-// ==========================================
-
-// YOUR ACTUAL FILE NAMES ARE:
-// photo1.png.png
-// photo2.png.png
-// photo3.png.png
-// photo4.png.png
-
-const memories = [
-
-    {
-        image: "photos/photo1.png.png",
-        title: "A little memory ♡",
-        text: "One of those moments I'll always remember."
-    },
-
-    {
-        image: "photos/photo2.png.png",
-        title: "Us being us 🤍",
-        text: "Another memory that makes me smile."
-    },
-
-    {
-        image: "photos/photo3.png.png",
-        title: "Good times ✨",
-        text: "Some moments are just too special to forget."
-    },
-
-    {
-        image: "photos/photo4.png.png",
-        title: "Forever a memory 🌸",
-        text: "And hopefully, there are many more to come."
-    }
-
-];
 
 
 // ---------- OPEN MEMORY ----------
@@ -267,7 +247,6 @@ const memories = [
 let openedMemories = 0;
 
 function memory(number) {
-
     const selected =
         memories[number];
 
@@ -300,7 +279,6 @@ function memory(number) {
     openedMemories++;
 
     if (openedMemories >= 4) {
-
         const nextButton =
             document.getElementById("toBig");
 
@@ -314,7 +292,6 @@ function memory(number) {
 // ---------- CLOSE MEMORY ----------
 
 function closeMemory() {
-
     const modal =
         document.getElementById("modal");
 
@@ -330,13 +307,10 @@ const modal =
     document.getElementById("modal");
 
 if (modal) {
-
     modal.addEventListener("click", function(event) {
-
         if (event.target === modal) {
             closeMemory();
         }
-
     });
 }
 
@@ -344,26 +318,19 @@ if (modal) {
 // ---------- ESC KEY CLOSES PHOTO ----------
 
 document.addEventListener("keydown", function(event) {
-
     if (event.key === "Escape") {
         closeMemory();
     }
-
 });
 
 
 // ---------- EXTRA SPARKLES ----------
 
 function sparkleBurst() {
-
     for (let i = 0; i < 8; i++) {
-
         setTimeout(() => {
-
             createFloatingEmoji();
-
         }, i * 150);
-
     }
 }
 
@@ -371,12 +338,10 @@ function sparkleBurst() {
 // ---------- START ----------
 
 document.addEventListener("DOMContentLoaded", function() {
-
-    // Make sure intro is visible first
     go("intro");
+});
 
-});function openFinalGift() {
-
+function openFinalGift() {
     const gift = document.getElementById("finalGift");
     const reveal = document.getElementById("finalReveal");
     const hint = document.getElementById("finalHint");
@@ -386,27 +351,20 @@ document.addEventListener("DOMContentLoaded", function() {
     hint.innerHTML = "wait... there's something inside ✨";
 
     setTimeout(() => {
-
         reveal.classList.add("show");
-
         hint.innerHTML = "♡";
-
     }, 850);
 }
 
 
 function finalSurprise() {
-
     const message =
         document.getElementById("tinyFinalMessage");
 
     message.innerHTML =
         "Okay, now go annoy someone else. 😭🤍";
 
-    // little sparkle burst
-
     for (let i = 0; i < 18; i++) {
-
         const sparkle = document.createElement("span");
 
         sparkle.innerHTML =
@@ -463,10 +421,10 @@ function finalSurprise() {
             sparkle.remove();
         }, 1200);
     }
-}function playMusic() {
+}
+
+function playMusic() {
     const music = document.getElementById("bgMusic");
-
     music.volume = 0.35;
-
     music.play();
 }
