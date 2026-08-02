@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For Envi ♡</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="floating"></div>
+
+
+<!-- ========================= -->
+<!-- FRONT PAGE -->
+<!-- ========================= -->
+
+<section class="page active" id="intro">
+
+    <div class="gift-card">
+
+        <div class="tiny-heading">
+            Someone left you a little gift...
+        </div>
+
+        <h1 class="for-envi">
+            For Envi
+            <span class="heart">♡</span>
+        </h1>
+
+        <p class="front-message">
+            I made a little something for you,
+            <br>
+            which I hope makes you smile. 🤍
+        </p>
+
+       <button class="open-gift-btn" onclick="openGift(); playMusic()">
+    Open Gift 🎁
+</button>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- FIRST ENVELOPE -->
+<!-- ========================= -->
+
+<section class="page" id="gift">
+
+    <div class="center">
+
+        <div class="eyebrow">
+            ✦ THERE'S SOMETHING FOR YOU ✦
+        </div>
+
+        <div class="envelope" id="env1" onclick="openEnvelope(1)">
+
+            <div class="env-back"></div>
+
+            <div class="inside">
+                💌
+            </div>
+
+            <div class="env-front"></div>
+
+            <div class="flap"></div>
+
+        </div>
+
+        <p class="hint">
+            click the envelope ♡
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- SHORT LETTER -->
+<!-- ========================= -->
+
+<section class="page" id="shortLetter">
+
+    <div class="paper">
+
+        <div class="paper-top">
+            ♡　✦　♡
+        </div>
+
+        <h2>
+            For my Envi...
+        </h2>
+
+        <p id="shortText"></p>
+
+        <button
+            class="pill hidden"
+            id="toMemories"
+            onclick="go('memories')">
+            continue ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- FOUR SURPRISE BOXES -->
+<!-- ========================= -->
+
+<section class="page" id="memories">
+
+    <div class="memory-wrap center">
+
+        <div class="eyebrow">
+            ✦ FOUR LITTLE MEMORIES ✦
+        </div>
+
+        <h2>
+            I have some
+            <span>surprises</span>
+            for you...
+        </h2>
+
+        <p class="muted">
+            Open them one by one ♡
+        </p>
+
+        <div class="boxes">
+
+    <button class="gift-box pink-gift" onclick="memory(0)">
+        <div class="gift-lid"></div>
+        <div class="gift-body">
+            <div class="ribbon-v"></div>
+            <div class="ribbon-h"></div>
+            <div class="bow">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <small>01</small>
+    </button>
+
+
+    <button class="gift-box lavender-gift" onclick="memory(1)">
+        <div class="gift-lid"></div>
+        <div class="gift-body">
+            <div class="ribbon-v"></div>
+            <div class="ribbon-h"></div>
+            <div class="bow">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <small>02</small>
+    </button>
+
+
+    <button class="gift-box blue-gift" onclick="memory(2)">
+        <div class="gift-lid"></div>
+        <div class="gift-body">
+            <div class="ribbon-v"></div>
+            <div class="ribbon-h"></div>
+            <div class="bow">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <small>03</small>
+    </button>
+
+
+    <button class="gift-box cream-gift" onclick="memory(3)">
+        <div class="gift-lid"></div>
+        <div class="gift-body">
+            <div class="ribbon-v"></div>
+            <div class="ribbon-h"></div>
+            <div class="bow">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <small>04</small>
+    </button>
+
+</div>
+
+        <button
+            class="pill hidden"
+            id="toBig"
+            onclick="go('bigGift')">
+            there's one more thing... 💌
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- PHOTO POPUP -->
+<!-- ========================= -->
+
+<div class="modal" id="modal">
+
+    <div class="memory-card">
+
+        <button class="close" onclick="closeMemory()">
+            ×
+        </button>
+
+        <img id="memoryImg" src="" alt="A memory of us">
+
+        <h3 id="memoryTitle"></h3>
+
+        <p id="memoryCaption"></p>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- SECOND ENVELOPE -->
+<!-- ========================= -->
+
+<section class="page" id="bigGift">
+
+    <div class="center">
+
+        <div class="eyebrow">
+            ✦ ONE LAST THING ✦
+        </div>
+
+        <h2>
+            I have something
+            <span>important</span>
+            to say.
+        </h2>
+
+        <div class="envelope" id="env2" onclick="openEnvelope(2)">
+
+            <div class="env-back"></div>
+
+            <div class="inside">
+                💌
+            </div>
+
+            <div class="env-front"></div>
+
+            <div class="flap"></div>
+
+        </div>
+
+        <p class="hint">
+            open me ♡
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- BIG LETTER -->
+<!-- ========================= -->
+
+<section class="page" id="bigLetter">
+
+    <div class="paper big-paper">
+
+        <div class="paper-top">
+            ✦　♡　✦
+        </div>
+
+        <h2>
+            Dear Envi,
+        </h2>
+
+        <p id="bigText"></p>
+
+        <button
+            class="pill hidden"
+            id="toFinal"
+            onclick="go('final')">
+            one last surprise 🎂
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- FINAL PAGE -->
+<!-- ========================= -->
+
+<!-- ========================= -->
+<!-- CREATIVE FINAL PAGE -->
+<!-- ========================= -->
+
+<section class="page final" id="final">
+
+    <div class="final-floaters">
+        <span>♡</span>
+        <span>✦</span>
+        <span>🌸</span>
+        <span>♡</span>
+        <span>🦋</span>
+        <span>✧</span>
+        <span>💕</span>
+        <span>🌷</span>
+    </div>
+
+    <div class="creative-ending">
+
+        <div class="final-eyebrow">
+            ✦ YOU MADE IT TO THE END ✦
+        </div>
+
+        <div class="mini-sparkles">
+            ✨　♡　✦　♡　✨
+        </div>
+
+        <h1>
+            One last little thing...
+        </h1>
+
+        <!-- GIFT -->
+
+        <div class="final-gift" id="finalGift" onclick="openFinalGift()">
+
+            <div class="final-gift-lid">
+                <div class="final-bow">🎀</div>
+            </div>
+
+            <div class="final-gift-box">
+                <div class="final-ribbon"></div>
+                <div class="final-ribbon-horizontal"></div>
+            </div>
+
+        </div>
+
+        <p class="final-hint" id="finalHint">
+            there's still something inside ♡
+        </p>
+
+
+        <!-- FINAL MESSAGE -->
+
+        <div class="final-reveal" id="finalReveal">
+
+            <div class="final-cake">
+                🎂
+            </div>
+
+            <h2>
+                Happy Friendship Day,
+                <span>Envi ♡</span>
+            </h2>
+
+            <p class="final-main-message">
+                And if you ever forget how much
+                you mean to me, just come back
+                to this little gift. 🤍
+            </p>
+
+            <div class="final-line">
+                ♡　✦　♡
+            </div>
+
+            <p class="final-signature">
+                Your forever annoying best friend ♡
+            </p>
+
+            <button
+                class="memory-button"
+                onclick="finalSurprise()">
+                keep this memory ♡
+            </button>
+
+            <p
+                class="tiny-final-message"
+                id="tinyFinalMessage">
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="page final" id="final">
+
+    <div class="center">
+
+        <div class="eyebrow">
+            ✦ HAPPY FRIENDSHIP DAY ✦
+        </div>
+
+        <h1>
+            Happy Friendship Day,
+            <br>
+            <span>Envi ♡</span>
+        </h1>
+
+        <div class="cake">
+
+            <div class="flame">
+                🕯️
+            </div>
+
+            <div class="cake-top"></div>
+
+            <div class="cake-body">
+                🎀
+            </div>
+
+            <div class="plate"></div>
+
+        </div>
+
+        <p class="lead">
+            Here's to more laughter,
+            more memories,
+            <br>
+            and more stupid conversations. ♡
+        </p>
+
+        <div class="sparkle-line">
+            🎀　✨　💕　🌸　🦋　✨　💕
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
